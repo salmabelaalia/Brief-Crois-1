@@ -6,49 +6,76 @@
 
 body {
     height: 100vh;
-    background: rgba(24, 7, 7, 1);
+    background-color: #f5f7fa;
     font-family: Arial, Helvetica, sans-serif;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: white;
-    height: 8vh;
-}
-
-header h1 {
-    font-size: 2rem;
-    letter-spacing: 3px;
-    font-weight: 700;
 }
 
 .bigcontain {
     display: flex;
-    height: 92vh;
+    height: 100vh;
+}
+
+#bigContainer {
+  position: relative;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 300px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    z-index: 10;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    background-color: #3498db;
+    border-radius: 50%;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.logo-text {
+    font-size: 1.2rem;
+    font-weight: 790;
+    color: black;
 }
 
 .side {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 18%;
-    background: white;
-    height: 92vh;
+    width: 24%;
+    box-shadow: 1px 0px 20px #ccc;
+    height: 100vh;
     padding: 20px 0;
 }
 
 .validation {
-    background: rgb(45, 209, 45);
-    color: white;
-    height: 50px;
-    width: 90%;
-    font-size: 17px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
+  width: 200px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1138f7;
+  color: white;
+  box-shadow: 1px 0px 8px #ccc;
+  font-weight: 600;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .validation:hover {
@@ -118,50 +145,91 @@ hr {
 }
 
 .container {
-    display: grid;
-    grid-template-columns: 38% 16% 23% 23%;
-    grid-template-rows: repeat(4, 25%);
-    width: 82%;
-    height: 92vh;
-    position: relative;
+  display: flex;
+  flex-grow: 1;
+  justify-items: center;
+  align-content: center;   
+  position: relative;
+  margin: 2%;
+  padding-left: 2%;
 }
 
 .container img {
     position: absolute;
-    width: 100%;
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    opacity: 0.3;
     pointer-events: none;
 }
 
-.conference, .reception, .serveurs, .securite, .personnel, .archives, .vertcolouar, .horizcolouar {
-    border: 1px solid black;
+.conference,
+.reception,
+.serveurs,
+.securite,
+.personnel,
+.archives,
+.vertcolouar,
+.horizcolouar {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    position: relative;
+  position: absolute;
     z-index: 1;
-    background: rgba(255, 255, 255, 0.95);
 }
 
-.conference { grid-column: 1 / 2; grid-row: 1 / 2; }
-.vertcolouar { grid-column: 2 / 3; grid-row: 1 / 4; background: rgba(200, 200, 200, 0.5); }
-.horizcolouar { grid-column: 3 / 5; grid-row: 2 / 3; background: rgba(200, 200, 200, 0.5); }
-.reception { grid-column: 1 / 2; grid-row: 2 / 4; }
-.serveurs { grid-column: 3 / 4; grid-row: 1 / 2; }
-.securite { grid-column: 4 / 5; grid-row: 1 / 2; }
-.personnel { grid-column: 3 / 4; grid-row: 3 / 4; }
-.archives { grid-column: 4 / 5; grid-row: 3 / 4; }
+.conference {
+  height: 30vh;
+  width: 26vw;
+}
 
-.reception.empty-required, .serveurs.empty-required, .securite.empty-required, .archives.empty-required {
+.reception {
+  height: 26vw;
+  width: 27vw;
+  bottom: 8px;
+  left: 0;
+}
+
+.serveurs {
+  right: 230px;
+  width: 15vw;
+  height: 30vh;
+}
+
+.securite {
+  right: 0;
+  width: 20vw;
+  height: 30vh;
+}
+
+.personnel {
+  right: 230px;
+  bottom: 8px;
+  width: 15vw;
+  height: 30vh;
+}
+
+.archives {
+  right: 0;
+  bottom: 8px;
+  width: 20vw;
+  height: 30vh;
+}
+
+.reception.empty-required,
+.serveurs.empty-required,
+.securite.empty-required,
+.archives.empty-required {
     background: rgba(255, 182, 193, 0.3);
     border: 2px dashed rgba(255, 100, 100, 0.5);
 }
 
-.conference h1, .reception h1, .serveurs h1, .securite h1, .personnel h1, .archives h1 {
+.conference h1,
+.reception h1,
+.serveurs h1,
+.securite h1,
+.personnel h1,
+.archives h1 {
     font-size: 14px;
     font-weight: 800;
     text-align: center;
@@ -174,7 +242,7 @@ hr {
     height: 50px;
     border-radius: 50%;
     border: none;
-    background: rgb(0, 168, 253);
+    background: #1138f7;
     color: white;
     font-size: 30px;
     cursor: pointer;
@@ -191,7 +259,12 @@ hr {
     opacity: 0.5;
 }
 
-.conferencelist, .receptionlist, .serveurslist, .securitelist, .persnnallist, .archiveslist {
+.conferencelist,
+.receptionlist,
+.serveurslist,
+.securitelist,
+.persnnallist,
+.archiveslist {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -282,21 +355,6 @@ hr {
     display: flex;
 }
 
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    z-index: 999;
-}
-
-.modal-overlay.active {
-    display: block;
-}
-
 .btncancel {
     width: 100%;
     display: flex;
@@ -338,7 +396,8 @@ hr {
     font-weight: 700;
 }
 
-.fromremplit input, .fromremplit select {
+.fromremplit input,
+.fromremplit select {
     width: 100%;
     height: 50px;
     border-radius: 10px;
@@ -347,7 +406,8 @@ hr {
     font-size: 16px;
 }
 
-.fromremplit input:focus, .fromremplit select:focus {
+.fromremplit input:focus,
+.fromremplit select:focus {
     border-color: rgb(0, 168, 253);
     outline: none;
 }
@@ -570,16 +630,40 @@ hr {
         grid-template-rows: repeat(4, 25%);
     }
 
-    .vertcolouar, .horizcolouar {
+    .vertcolouar,
+    .horizcolouar {
         display: none;
     }
 
-    .conference { grid-column: 1 / 2; grid-row: 1 / 2; }
-    .serveurs { grid-column: 2 / 3; grid-row: 1 / 2; }
-    .reception { grid-column: 1 / 2; grid-row: 2 / 3; }
-    .securite { grid-column: 2 / 3; grid-row: 2 / 3; }
-    .personnel { grid-column: 1 / 2; grid-row: 3 / 4; }
-    .archives { grid-column: 2 / 3; grid-row: 3 / 4; }
+    .conference {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    .serveurs {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .reception {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .securite {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    .personnel {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+
+    .archives {
+        grid-column: 2 / 3;
+        grid-row: 3 / 4;
+    }
 }
 
 @media (max-width: 767px) {
@@ -587,7 +671,8 @@ hr {
         font-size: 1.2rem;
     }
 
-    .validationForm, .profile-modal {
+    .validationForm,
+    .profile-modal {
         width: 95%;
         padding: 20px;
     }
@@ -599,14 +684,37 @@ hr {
         padding: 10px;
     }
 
-    .conference, .reception, .serveurs, .securite, .personnel, .archives {
+    .conference,
+    .reception,
+    .serveurs,
+    .securite,
+    .personnel,
+    .archives {
         grid-column: 1 / 2;
     }
 
-    .conference { grid-row: 1 / 2; }
-    .reception { grid-row: 2 / 3; }
-    .serveurs { grid-row: 3 / 4; }
-    .securite { grid-row: 4 / 5; }
-    .personnel { grid-row: 5 / 6; }
-    .archives { grid-row: 6 / 7; }
+    .conference {
+        grid-row: 1 / 2;
+    }
+
+    .reception {
+        grid-row: 2 / 3;
+    }
+
+    .serveurs {
+        grid-row: 3 / 4;
+    }
+
+    .securite {
+        grid-row: 4 / 5;
+    }
+
+    .personnel {
+        grid-row: 5 / 6;
+    }
+
+    .archives {
+        grid-row: 6 / 7;
+    }
 }
+
