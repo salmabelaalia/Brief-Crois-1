@@ -47,7 +47,7 @@ body {
 }
 
 .validation:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 hr {
@@ -73,23 +73,23 @@ hr {
     align-items: center;
     gap: 10px;
     padding: 10px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    border-radius: 7px 10px;
+    box-shadow: 1px 0px 8px #ccc;
     width: 95%;
-    border: 2px solid #e0e0e0;
+    height: 17%;
+    transition: 0.2s ease-in-out;
     cursor: pointer;
+    border-left: 3px solid #1138f7;
 }
 
 .pronalinfo:hover {
-    border-color: #00b4d8;
+    transform: translateY(-2px);
 }
 
 .pronalinfo img {
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    border: 4px solid rgb(45, 209, 45);
     object-fit: cover;
 }
 
