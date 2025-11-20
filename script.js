@@ -22,8 +22,83 @@ const ROLE_RESTRICTIONS = {
 };
 
 // État de l'application
-let workers = [];
-let nextWorkerId = 1;
+let workers = [
+    {
+        id: 1,
+        name: 'Alice Martin',
+        role: 'Réceptionniste',
+        photo: 'https://randomuser.me/api/portraits/women/68.jpg',
+        email: 'alice@example.com',
+        phone: '0612345678',
+        experiences: [
+            { position: 'Assistante accueil', period: '2019-2021' }
+        ],
+        zone: null
+    },
+    {
+        id: 2,
+        name: 'Bob Dupont',
+        role: 'Technicien IT',
+        photo: 'https://randomuser.me/api/portraits/men/75.jpg',
+        email: 'bob@example.com',
+        phone: '0623456789',
+        experiences: [
+            { position: 'Support IT', period: '2018-2020' }
+        ],
+        zone: null
+    },
+    {
+        id: 3,
+        name: 'Charlie Durand',
+        role: 'Agent de sécurité',
+        photo: 'https://randomuser.me/api/portraits/men/65.jpg',
+        email: 'charlie@example.com',
+        phone: '0634567890',
+        experiences: [
+            { position: 'Sécurité bâtiment', period: '2020-2023' }
+        ],
+        zone: null
+    },
+    {
+        id: 4,
+        name: 'Diana Leroy',
+        role: 'Manager',
+        photo: 'https://randomuser.me/api/portraits/women/55.jpg',
+        email: 'diana@example.com',
+        phone: '0645678901',
+        experiences: [
+            { position: 'Chef de projet', period: '2017-2022' }
+        ],
+        zone: null
+    },
+    {
+        id: 5,
+        name: 'Ethan Moreau',
+        role: 'Nettoyage',
+        photo: 'https://randomuser.me/api/portraits/men/52.jpg',
+        email: 'ethan@example.com',
+        phone: '0656789012',
+        experiences: [
+            { position: 'Entretien locaux', period: '2019-2023' }
+        ],
+        zone: null
+    },
+    {
+        id: 6,
+        name: 'Fiona Bernard',
+        role: 'FS Developer',
+        photo: 'https://randomuser.me/api/portraits/women/45.jpg',
+        email: 'fiona@example.com',
+        phone: '0667890123',
+        experiences: [
+            { position: 'Développeuse Full Stack', period: '2021-2023' }
+        ],
+        zone: null
+    }
+];
+
+let nextWorkerId = 7;
+
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
@@ -168,9 +243,23 @@ function handleAddWorker(e) {
 
 // Vérifier si un employé peut être dans une zone
 function canAssignToZone(worker, zone) {
-    const allowedZones = ROLE_RESTRICTIONS[worker.role] || [];
-    return allowedZones.includes(zone);
+    switch (worker.role) {
+        case 'Réceptionniste':
+            return zone === 'reception'; 
+        case 'Technicien IT':
+            return zone === 'serveurs';
+        case 'Agent de sécurité':
+            return zone === 'securite'; 
+        case 'Manager':
+            return true; 
+        case 'Nettoyage':
+            return zone !== 'archives';
+        default:
+            // Autres rôles : accès libre
+            return !['reception', 'serveurs', 'securite', 'archives'].includes(zone);
+    }
 }
+
 
 // Obtenir les employés éligibles pour une zone
 function getEligibleWorkers(zone) {
