@@ -1,371 +1,447 @@
 // Configuration des zones et restrictions
 const ZONE_CONFIG = {
-    conference: { name: 'Salle de conférence', limit: 10, required: false },
-    reception: { name: 'Réception', limit: 2, required: true },
-    serveurs: { name: 'Salle des serveurs', limit: 3, required: true },
-    securite: { name: 'Salle de sécurité', limit: 2, required: true },
-    personnel: { name: 'Salle du personnel', limit: 15, required: false },
-    archives: { name: 'Salle d\'archives', limit: 2, required: true }
+  conference: { name: "Salle de conférence", limit: 10, required: false },
+  reception: { name: "Réception", limit: 2, required: true },
+  serveurs: { name: "Salle des serveurs", limit: 3, required: true },
+  securite: { name: "Salle de sécurité", limit: 2, required: true },
+  personnel: { name: "Salle du personnel", limit: 15, required: false },
+  archives: { name: "Salle d'archives", limit: 2, required: true },
 };
 
 // Restrictions par rôle
 const ROLE_RESTRICTIONS = {
-    'Réceptionniste': ['reception'],
-    'Technicien IT': ['serveurs'],
-    'Agent de sécurité': ['securite'],
-    'Manager': ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives'],
-    'Nettoyage': ['conference', 'reception', 'serveurs', 'securite', 'personnel'],
-    'FS Developer': ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives'],
-    'Comptable': ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives'],
-    'RH': ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives'],
-    'Commercial': ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives']
+  Réceptionniste: ["reception"],
+  "Technicien IT": ["serveurs"],
+  "Agent de sécurité": ["securite"],
+  Manager: [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ],
+  Nettoyage: ["conference", "reception", "serveurs", "securite", "personnel"],
+  "FS Developer": [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ],
+  Comptable: [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ],
+  RH: [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ],
+  Commercial: [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ],
 };
 
 // État de l'application
 let workers = [
-    {
-        id: 1,
-        name: 'Alice Martin',
-        role: 'Réceptionniste',
-        photo: 'https://randomuser.me/api/portraits/women/68.jpg',
-        email: 'alice@example.com',
-        phone: '0612345678',
-        experiences: [
-            { position: 'Assistante accueil', period: '2019-2021' }
-        ],
-        zone: null
-    },
-    {
-        id: 2,
-        name: 'Bob Dupont',
-        role: 'Technicien IT',
-        photo: 'https://randomuser.me/api/portraits/men/75.jpg',
-        email: 'bob@example.com',
-        phone: '0623456789',
-        experiences: [
-            { position: 'Support IT', period: '2018-2020' }
-        ],
-        zone: null
-    },
-    {
-        id: 3,
-        name: 'Charlie Durand',
-        role: 'Agent de sécurité',
-        photo: 'https://randomuser.me/api/portraits/men/65.jpg',
-        email: 'charlie@example.com',
-        phone: '0634567890',
-        experiences: [
-            { position: 'Sécurité bâtiment', period: '2020-2023' }
-        ],
-        zone: null
-    },
-    {
-        id: 4,
-        name: 'Diana Leroy',
-        role: 'Manager',
-        photo: 'https://randomuser.me/api/portraits/women/55.jpg',
-        email: 'diana@example.com',
-        phone: '0645678901',
-        experiences: [
-            { position: 'Chef de projet', period: '2017-2022' }
-        ],
-        zone: null
-    },
-    {
-        id: 5,
-        name: 'Ethan Moreau',
-        role: 'Nettoyage',
-        photo: 'https://randomuser.me/api/portraits/men/52.jpg',
-        email: 'ethan@example.com',
-        phone: '0656789012',
-        experiences: [
-            { position: 'Entretien locaux', period: '2019-2023' }
-        ],
-        zone: null
-    },
-    {
-        id: 6,
-        name: 'Fiona Bernard',
-        role: 'FS Developer',
-        photo: 'https://randomuser.me/api/portraits/women/45.jpg',
-        email: 'fiona@example.com',
-        phone: '0667890123',
-        experiences: [
-            { position: 'Développeuse Full Stack', period: '2021-2023' }
-        ],
-        zone: null
-    }
+  {
+    id: 1,
+    name: "Alice Martin",
+    role: "Réceptionniste",
+    photo: "https://randomuser.me/api/portraits/women/68.jpg",
+    email: "alice@example.com",
+    phone: "0612345678",
+    experiences: [{ position: "Assistante accueil", period: "2019-2021" }],
+    zone: null,
+  },
+  {
+    id: 2,
+    name: "Bob Dupont",
+    role: "Technicien IT",
+    photo: "https://randomuser.me/api/portraits/men/75.jpg",
+    email: "bob@example.com",
+    phone: "0623456789",
+    experiences: [{ position: "Support IT", period: "2018-2020" }],
+    zone: null,
+  },
+  {
+    id: 3,
+    name: "Charlie Durand",
+    role: "Agent de sécurité",
+    photo: "https://randomuser.me/api/portraits/men/65.jpg",
+    email: "charlie@example.com",
+    phone: "0634567890",
+    experiences: [{ position: "Sécurité bâtiment", period: "2020-2023" }],
+    zone: null,
+  },
+  {
+    id: 4,
+    name: "Diana Leroy",
+    role: "Manager",
+    photo: "https://randomuser.me/api/portraits/women/55.jpg",
+    email: "diana@example.com",
+    phone: "0645678901",
+    experiences: [{ position: "Chef de projet", period: "2017-2022" }],
+    zone: null,
+  },
+  {
+    id: 5,
+    name: "Ethan Moreau",
+    role: "Nettoyage",
+    photo: "https://randomuser.me/api/portraits/men/52.jpg",
+    email: "ethan@example.com",
+    phone: "0656789012",
+    experiences: [{ position: "Entretien locaux", period: "2019-2023" }],
+    zone: null,
+  },
+  {
+    id: 6,
+    name: "Fiona Bernard",
+    role: "FS Developer",
+    photo: "https://randomuser.me/api/portraits/women/45.jpg",
+    email: "fiona@example.com",
+    phone: "0667890123",
+    experiences: [{ position: "Développeuse Full Stack", period: "2021-2023" }],
+    zone: null,
+  },
 ];
 
 let nextWorkerId = 7;
 
-
 // Initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    loadFromStorage();
-    initializeEventListeners();
-    renderAll();
-    updateRequiredZones();
+document.addEventListener("DOMContentLoaded", () => {
+  loadFromStorage();
+  initializeEventListeners();
+  renderAll();
+  updateRequiredZones();
 });
 
 // Écouteurs d'événements
 function initializeEventListeners() {
-    // Bouton ajouter employé
-    document.getElementById('validation').addEventListener('click', openAddModal);
-    
-    // Fermeture modales
-    document.getElementById('closeModal').addEventListener('click', closeAddModal);
-    document.getElementById('closeProfileModal').addEventListener('click', closeProfileModal);
-    document.getElementById('closeZoneSelector').addEventListener('click', closeZoneSelector);
-    document.getElementById('modalOverlay').addEventListener('click', () => {
-        closeAddModal();
-        closeProfileModal();
-        closeZoneSelector();
+  // Bouton ajouter employé
+  document.getElementById("validation").addEventListener("click", openAddModal);
+
+  // Fermeture modales
+  document
+    .getElementById("closeModal")
+    .addEventListener("click", closeAddModal);
+  document
+    .getElementById("closeProfileModal")
+    .addEventListener("click", closeProfileModal);
+  document
+    .getElementById("closeZoneSelector")
+    .addEventListener("click", closeZoneSelector);
+  document.getElementById("modalOverlay").addEventListener("click", () => {
+    closeAddModal();
+    closeProfileModal();
+    closeZoneSelector();
+  });
+
+  // Formulaire d'ajout
+  document
+    .getElementById("addWorkerForm")
+    .addEventListener("submit", handleAddWorker);
+
+  // Prévisualisation photo
+  document
+    .getElementById("workerPhoto")
+    .addEventListener("input", updatePhotoPreview);
+
+  // Bouton ajouter expérience
+  document
+    .getElementById("addExperienceBtn")
+    .addEventListener("click", addExperienceField);
+
+  // Boutons + des zones
+  document.querySelectorAll(".plusbtn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const zone = e.target.dataset.zone;
+      openZoneSelector(zone);
     });
-    
-    // Formulaire d'ajout
-    document.getElementById('addWorkerForm').addEventListener('submit', handleAddWorker);
-    
-    // Prévisualisation photo
-    document.getElementById('workerPhoto').addEventListener('input', updatePhotoPreview);
-    
-    // Bouton ajouter expérience
-    document.getElementById('addExperienceBtn').addEventListener('click', addExperienceField);
-    
-    // Boutons + des zones
-    document.querySelectorAll('.plusbtn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const zone = e.target.dataset.zone;
-            openZoneSelector(zone);
-        });
-    });
+  });
 }
 
 // Gestion du stockage localStorage
 function saveToStorage() {
-    localStorage.setItem('workSphereData', JSON.stringify({
-        workers: workers,
-        nextWorkerId: nextWorkerId
-    }));
+  localStorage.setItem(
+    "workSphereData",
+    JSON.stringify({
+      workers: workers,
+      nextWorkerId: nextWorkerId,
+    })
+  );
 }
 
 function loadFromStorage() {
-    const saved = localStorage.getItem('workSphereData');
-    if (saved) {
-        const data = JSON.parse(saved);
-        workers = data.workers || [];
-        nextWorkerId = data.nextWorkerId || 1;
-    }
+  const saved = localStorage.getItem("workSphereData");
+  if (saved) {
+    const data = JSON.parse(saved);
+    workers = data.workers || [];
+    nextWorkerId = data.nextWorkerId || 1;
+  }
 }
 
 // Modale d'ajout
 function openAddModal() {
-    document.getElementById('validationForm').classList.add('active');
-    document.getElementById('modalOverlay').classList.add('active');
-    document.getElementById('addWorkerForm').reset();
-    document.getElementById('experiencesList').innerHTML = '';
-    document.getElementById('profileimg').classList.remove('active');
+  document.getElementById("validationForm").classList.add("active");
+  document.getElementById("modalOverlay").classList.add("active");
+  document.getElementById("addWorkerForm").reset();
+  document.getElementById("experiencesList").innerHTML = "";
+  document.getElementById("profileimg").classList.remove("active");
 }
 
 function closeAddModal() {
-    document.getElementById('validationForm').classList.remove('active');
-    document.getElementById('modalOverlay').classList.remove('active');
+  document.getElementById("validationForm").classList.remove("active");
+  document.getElementById("modalOverlay").classList.remove("active");
 }
 
 // Prévisualisation photo
 function updatePhotoPreview() {
-    const url = document.getElementById('workerPhoto').value;
-    const img = document.getElementById('profileimg');
-    if (url) {
-        img.src = url;
-        img.classList.add('active');
-        img.onerror = () => {
-            img.classList.remove('active');
-        };
-    } else {
-        img.classList.remove('active');
-    }
+  const url = document.getElementById("workerPhoto").value;
+  const img = document.getElementById("profileimg");
+  if (url) {
+    img.src = url;
+    img.classList.add("active");
+    img.onerror = () => {
+      img.classList.remove("active");
+    };
+  } else {
+    img.classList.remove("active");
+  }
 }
 
 // Gestion des expériences
 function addExperienceField() {
-    const container = document.getElementById('experiencesList');
-    const div = document.createElement('div');
-    div.className = 'experience-item';
-    div.innerHTML = `
-        <input type="text" placeholder="Poste / Entreprise" required>
-        <input type="text" placeholder="Période (ex: 2020-2022)" required>
-        <button type="button" class="remove-experience-btn">×</button>
+  const container = document.getElementById("experiencesList");
+  const div = document.createElement("div");
+  div.className = "experience-item";
+  div.innerHTML = `
+    <!-- Labels et inputs texte -->
+    <div class="text-field">
+        <label for="poste">Poste</label>
+        <input type="text" name="poste" placeholder="Poste" required>
+    </div>
+    <div class="text-field">
+        <label for="entreprise">Entreprise</label>
+        <input type="text" name="entreprise" placeholder="Entreprise" required>
+    </div>
+
+    <!-- Dates côte à côte -->
+    <div class="date-container">
+        <div class="date-field">
+            <label for="startDate">Date début</label>
+            <input type="date" name="startDate" required>
+        </div>
+        <div class="date-field">
+            <label for="endDate">Date fin</label>
+            <input type="date" name="endDate" required>
+        </div>
+    </div>
+    <button type="button" class="remove-experience-btn">×</button>
     `;
-    div.querySelector('.remove-experience-btn').addEventListener('click', () => div.remove());
-    container.appendChild(div);
+  div
+    .querySelector(".remove-experience-btn")
+    .addEventListener("click", () => div.remove());
+  container.appendChild(div);
 }
 
 // Ajout d'un employé
 function handleAddWorker(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('workerName').value.trim();
-    const role = document.getElementById('workerRole').value;
-    const photo = document.getElementById('workerPhoto').value.trim();
-    const email = document.getElementById('workerEmail').value.trim();
-    const phone = document.getElementById('workerPhone').value.trim();
-    
-    // Récupération des expériences
-    const experiences = [];
-    document.querySelectorAll('.experience-item').forEach(item => {
-        const inputs = item.querySelectorAll('input');
-        if (inputs[0].value && inputs[1].value) {
-            experiences.push({
-                position: inputs[0].value.trim(),
-                period: inputs[1].value.trim()
-            });
-        }
-    });
-    
-    const worker = {
-        id: nextWorkerId++,
-        name: name,
-        role: role,
-        photo: photo || '',
-        email: email,
-        phone: phone,
-        experiences: experiences,
-        zone: null
-    };
-    
-    workers.push(worker);
-    saveToStorage();
-    renderAll();
-    updateRequiredZones();
-    closeAddModal();
+  e.preventDefault();
+
+  const name = document.getElementById("workerName").value.trim();
+  const role = document.getElementById("workerRole").value;
+  const photo = document.getElementById("workerPhoto").value.trim();
+  const email = document.getElementById("workerEmail").value.trim();
+  const phone = document.getElementById("workerPhone").value.trim();
+
+  // Récupération des expériences
+  const experiences = [];
+  document.querySelectorAll(".experience-item").forEach((item) => {
+    const inputs = item.querySelectorAll("input");
+    if (inputs[0].value && inputs[1].value) {
+      experiences.push({
+        position: inputs[0].value.trim(),
+        period: inputs[1].value.trim(),
+      });
+    }
+  });
+
+  const worker = {
+    id: nextWorkerId++,
+    name: name,
+    role: role,
+    photo: photo || "",
+    email: email,
+    phone: phone,
+    experiences: experiences,
+    zone: null,
+  };
+
+  workers.push(worker);
+  saveToStorage();
+  renderAll();
+  updateRequiredZones();
+  closeAddModal();
 }
 
 // Vérifier si un employé peut être dans une zone
 function canAssignToZone(worker, zone) {
-    switch (worker.role) {
-        case 'Réceptionniste':
-            return zone === 'reception'; 
-        case 'Technicien IT':
-            return zone === 'serveurs';
-        case 'Agent de sécurité':
-            return zone === 'securite'; 
-        case 'Manager':
-            return true; 
-        case 'Nettoyage':
-            return zone !== 'archives';
-        default:
-            // Autres rôles : accès libre
-            return !['reception', 'serveurs', 'securite', 'archives'].includes(zone);
-    }
+  switch (worker.role) {
+    case "Réceptionniste":
+      return zone === "reception";
+    case "Technicien IT":
+      return zone === "serveurs";
+    case "Agent de sécurité":
+      return zone === "securite";
+    case "Manager":
+      return true;
+    case "Nettoyage":
+      return zone !== "archives";
+    default:
+      // Autres rôles : accès libre
+      return !["reception", "serveurs", "securite", "archives"].includes(zone);
+  }
 }
-
 
 // Obtenir les employés éligibles pour une zone
 function getEligibleWorkers(zone) {
-    return workers.filter(w => !w.zone && canAssignToZone(w, zone));
+  return workers.filter((w) => !w.zone && canAssignToZone(w, zone));
 }
 
 // Ouvrir le sélecteur de zone
 function openZoneSelector(zone) {
-    const eligibleWorkers = getEligibleWorkers(zone);
-    const zoneData = ZONE_CONFIG[zone];
-    const currentCount = workers.filter(w => w.zone === zone).length;
-    
-    if (currentCount >= zoneData.limit) {
-        alert(`La limite de ${zoneData.limit} employés est atteinte pour cette zone.`);
-        return;
-    }
-    
-    if (eligibleWorkers.length === 0) {
-        alert('Aucun employé disponible pour cette zone.');
-        return;
-    }
-    
-    // Afficher la modale de sélection
-    document.getElementById('zoneSelectorTitle').textContent = `Sélectionner un employé - ${zoneData.name}`;
-    const listContainer = document.getElementById('zoneSelectorList');
-    
-    listContainer.innerHTML = eligibleWorkers.map(worker => `
-        <div class="pronalinfo" style="cursor: pointer; margin-bottom: 10px;" onclick="selectWorkerForZone(${worker.id}, '${zone}')">
-            <img src="${worker.photo || ''}" alt="${worker.name}" onerror="handleImageError(this)">
+  const eligibleWorkers = getEligibleWorkers(zone);
+  const zoneData = ZONE_CONFIG[zone];
+  const currentCount = workers.filter((w) => w.zone === zone).length;
+
+  if (currentCount >= zoneData.limit) {
+    alert(
+      `La limite de ${zoneData.limit} employés est atteinte pour cette zone.`
+    );
+    return;
+  }
+
+  if (eligibleWorkers.length === 0) {
+    alert("Aucun employé disponible pour cette zone.");
+    return;
+  }
+
+  // Afficher la modale de sélection
+  document.getElementById(
+    "zoneSelectorTitle"
+  ).textContent = `Sélectionner un employé - ${zoneData.name}`;
+  const listContainer = document.getElementById("zoneSelectorList");
+
+  listContainer.innerHTML = eligibleWorkers
+    .map(
+      (worker) => `
+        <div class="pronalinfo" style="cursor: pointer; margin-bottom: 10px;" onclick="selectWorkerForZone(${
+          worker.id
+        }, '${zone}')">
+            <img src="${worker.photo || ""}" alt="${
+        worker.name
+      }" onerror="handleImageError(this)">
             <div class="info">
                 <h1>${worker.name}</h1>
                 <p>${worker.role}</p>
             </div>
         </div>
-    `).join('');
-    
-    document.getElementById('zoneSelectorModal').classList.add('active');
-    document.getElementById('modalOverlay').classList.add('active');
+    `
+    )
+    .join("");
+
+  document.getElementById("zoneSelectorModal").classList.add("active");
+  document.getElementById("modalOverlay").classList.add("active");
 }
 
+// Sélectionner unn employé pour ajouter
 function selectWorkerForZone(workerId, zone) {
-    assignWorkerToZone(workerId, zone);
-    closeZoneSelector();
+  assignWorkerToZone(workerId, zone);
+  closeZoneSelector();
 }
 
 function closeZoneSelector() {
-    document.getElementById('zoneSelectorModal').classList.remove('active');
-    document.getElementById('modalOverlay').classList.remove('active');
+  console.log("Fermeture du sélecteur de zone"); 
+  document.getElementById("zoneSelectorModal").classList.remove("active");
+  document.getElementById("modalOverlay").classList.remove("active");
 }
 
 // Assigner un employé à une zone
 function assignWorkerToZone(workerId, zone) {
-    const worker = workers.find(w => w.id === workerId);
-    if (!worker) return;
-    
-    const zoneData = ZONE_CONFIG[zone];
-    const currentCount = workers.filter(w => w.zone === zone).length;
-    
-    if (currentCount >= zoneData.limit) {
-        alert(`La limite de ${zoneData.limit} employés est atteinte.`);
-        return;
-    }
-    
-    if (!canAssignToZone(worker, zone)) {
-        alert(`${worker.name} ne peut pas être assigné à cette zone.`);
-        return;
-    }
-    
-    worker.zone = zone;
-    saveToStorage();
-    renderAll();
-    updateRequiredZones();
+  const worker = workers.find((w) => w.id === workerId);
+  if (!worker) return;
+
+  const zoneData = ZONE_CONFIG[zone];
+  const currentCount = workers.filter((w) => w.zone === zone).length;
+
+  if (currentCount >= zoneData.limit) {
+    alert(`La limite de ${zoneData.limit} employés est atteinte.`);
+    return;
+  }
+
+  if (!canAssignToZone(worker, zone)) {
+    alert(`${worker.name} ne peut pas être assigné à cette zone.`);
+    return;
+  }
+
+  worker.zone = zone;
+  saveToStorage();
+  renderAll();
+  updateRequiredZones();
 }
 
 // Retirer un employé d'une zone
 function removeWorkerFromZone(workerId) {
-    const worker = workers.find(w => w.id === workerId);
-    if (worker) {
-        worker.zone = null;
-        saveToStorage();
-        renderAll();
-        updateRequiredZones();
-    }
+  const worker = workers.find((w) => w.id === workerId);
+  if (worker) {
+    worker.zone = null;
+    saveToStorage();
+    renderAll();
+    updateRequiredZones();
+  }
 }
 
 // Afficher le profil d'un employé
 function showWorkerProfile(workerId) {
-    const worker = workers.find(w => w.id === workerId);
-    if (!worker) return;
-    
-    const zoneName = worker.zone ? ZONE_CONFIG[worker.zone].name : 'Non assigné';
-    
-    const experiencesHtml = worker.experiences.length > 0
-        ? worker.experiences.map(exp => `
+  const worker = workers.find((w) => w.id === workerId);
+  if (!worker) return;
+
+  const zoneName = worker.zone ? ZONE_CONFIG[worker.zone].name : "Non assigné";
+
+  const experiencesHtml =
+    worker.experiences.length > 0
+      ? worker.experiences
+          .map(
+            (exp) => `
             <div class="experience-item-profile">
                 <strong>${exp.position}</strong>
                 <span>${exp.period}</span>
             </div>
-        `).join('')
-        : '<p style="color: #999; text-align: center;">Aucune expérience</p>';
-    
-    const photoHtml = worker.photo 
-        ? `<img src="${worker.photo}" alt="${worker.name}" class="profile-photo" onerror="handleProfileImageError(this)">`
-        : `<div class="profile-photo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 60px;">👤</div>`;
-    
-    document.getElementById('profileContent').innerHTML = `
+        `
+          )
+          .join("")
+      : '<p style="color: #999; text-align: center;">Aucune expérience</p>';
+
+  const photoHtml = worker.photo
+    ? `<img src="${worker.photo}" alt="${worker.name}" class="profile-photo" onerror="handleProfileImageError(this)">`
+    : `<div class="profile-photo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 60px;">👤</div>`;
+
+  document.getElementById("profileContent").innerHTML = `
         ${photoHtml}
         <div class="profile-name">${worker.name}</div>
         <div class="profile-role">${worker.role}</div>
@@ -388,152 +464,174 @@ function showWorkerProfile(workerId) {
             </div>
         </div>
     `;
-    
-    document.getElementById('profileModal').classList.add('active');
-    document.getElementById('modalOverlay').classList.add('active');
+
+  document.getElementById("profileModal").classList.add("active");
+  document.getElementById("modalOverlay").classList.add("active");
 }
 
 function closeProfileModal() {
-    document.getElementById('profileModal').classList.remove('active');
-    document.getElementById('modalOverlay').classList.remove('active');
+  document.getElementById("profileModal").classList.remove("active");
+  document.getElementById("modalOverlay").classList.remove("active");
 }
 
 // Rendu de tous les éléments
 function renderAll() {
-    renderUnassignedWorkers();
-    renderZoneWorkers();
-    updateZoneButtons();
-    updateZoneCounters();
+  renderUnassignedWorkers();
+  renderZoneWorkers();
+  updateZoneButtons();
+  updateZoneCounters();
 }
 
 // Rendre les employés non assignés
 function renderUnassignedWorkers() {
-    const container = document.getElementById('persolist');
-    const unassigned = workers.filter(w => !w.zone);
-    
-    if (unassigned.length === 0) {
-        container.innerHTML = `
+  const container = document.getElementById("persolist");
+  const unassigned = workers.filter((w) => !w.zone);
+
+  if (unassigned.length === 0) {
+    container.innerHTML = `
             <div class="empty-state">
                 <div class="empty-state-icon">👤</div>
                 <p>Aucun personnel non assigné</p>
             </div>
         `;
-        return;
-    }
-    
-    container.innerHTML = unassigned.map(worker => `
+    return;
+  }
+
+  container.innerHTML = unassigned
+    .map(
+      (worker) => `
         <div class="pronalinfo" onclick="showWorkerProfile(${worker.id})">
-            <img src="${worker.photo || ''}" alt="${worker.name}" onerror="handleImageError(this)">
+            <img src="${worker.photo || ""}" alt="${
+        worker.name
+      }" onerror="handleImageError(this)">
             <div class="info">
                 <h1>${worker.name}</h1>
                 <p>${worker.role}</p>
             </div>
         </div>
-    `).join('');
+    `
+    )
+    .join("");
 }
 
 // Rendre les employés dans les zones
 function renderZoneWorkers() {
-    const zones = ['conference', 'reception', 'serveurs', 'securite', 'personnel', 'archives'];
-    
-    zones.forEach(zone => {
-        const container = document.getElementById(`${zone}list`);
-        const zoneWorkers = workers.filter(w => w.zone === zone);
-        
-        container.innerHTML = zoneWorkers.map(worker => `
+  const zones = [
+    "conference",
+    "reception",
+    "serveurs",
+    "securite",
+    "personnel",
+    "archives",
+  ];
+
+  zones.forEach((zone) => {
+    const container = document.getElementById(`${zone}list`);
+    const zoneWorkers = workers.filter((w) => w.zone === zone);
+
+    container.innerHTML = zoneWorkers
+      .map(
+        (worker) => `
             <div class="pronalinfor" onclick="showWorkerProfile(${worker.id})">
-                <button class="remove-from-zone" onclick="event.stopPropagation(); removeWorkerFromZone(${worker.id})" title="Retirer">×</button>
-                <img src="${worker.photo || ''}" alt="${worker.name}" onerror="handleImageError(this)">
+                <button class="remove-from-zone" onclick="event.stopPropagation(); removeWorkerFromZone(${
+                  worker.id
+                })" title="Retirer">×</button>
+                <img src="${worker.photo || ""}" alt="${
+          worker.name
+        }" onerror="handleImageError(this)">
                 <div class="info">
                     <h1>${worker.name}</h1>
                     <p>${worker.role}</p>
                 </div>
             </div>
-        `).join('');
-    });
+        `
+      )
+      .join("");
+  });
 }
 
 // Mettre à jour les boutons des zones
 function updateZoneButtons() {
-    Object.keys(ZONE_CONFIG).forEach(zone => {
-        const btn = document.querySelector(`.plusbtn[data-zone="${zone}"]`);
-        const zoneData = ZONE_CONFIG[zone];
-        const currentCount = workers.filter(w => w.zone === zone).length;
-        const eligibleCount = getEligibleWorkers(zone).length;
-        
-        if (currentCount >= zoneData.limit || eligibleCount === 0) {
-            btn.classList.add('disabled');
-        } else {
-            btn.classList.remove('disabled');
-        }
-    });
+  Object.keys(ZONE_CONFIG).forEach((zone) => {
+    const btn = document.querySelector(`.plusbtn[data-zone="${zone}"]`);
+    const zoneData = ZONE_CONFIG[zone];
+    const currentCount = workers.filter((w) => w.zone === zone).length;
+    const eligibleCount = getEligibleWorkers(zone).length;
+
+    if (currentCount >= zoneData.limit || eligibleCount === 0) {
+      btn.classList.add("disabled");
+    } else {
+      btn.classList.remove("disabled");
+    }
+  });
 }
 
 // Mettre à jour les compteurs de zones
 function updateZoneCounters() {
-    Object.keys(ZONE_CONFIG).forEach(zone => {
-        const zoneElement = document.querySelector(`.${zone}`);
-        const currentCount = workers.filter(w => w.zone === zone).length;
-        const zoneData = ZONE_CONFIG[zone];
-        
-        // Supprimer l'ancien compteur
-        const oldCounter = zoneElement.querySelector('.zone-counter');
-        if (oldCounter) oldCounter.remove();
-        
-        // Ajouter le nouveau compteur
-        if (currentCount > 0) {
-            const counter = document.createElement('div');
-            counter.className = 'zone-counter';
-            counter.textContent = `${currentCount}/${zoneData.limit}`;
-            zoneElement.appendChild(counter);
-        }
-        
-        // Gérer la classe zone-limit-reached
-        if (currentCount >= zoneData.limit) {
-            zoneElement.classList.add('zone-limit-reached');
-        } else {
-            zoneElement.classList.remove('zone-limit-reached');
-        }
-    });
+  Object.keys(ZONE_CONFIG).forEach((zone) => {
+    const zoneElement = document.querySelector(`.${zone}`);
+    const currentCount = workers.filter((w) => w.zone === zone).length;
+    const zoneData = ZONE_CONFIG[zone];
+
+    // Supprimer l'ancien compteur
+    const oldCounter = zoneElement.querySelector(".zone-counter");
+    if (oldCounter) oldCounter.remove();
+
+    // Ajouter le nouveau compteur
+    if (currentCount > 0) {
+      const counter = document.createElement("div");
+      counter.className = "zone-counter";
+      counter.textContent = `${currentCount}/${zoneData.limit}`;
+      zoneElement.appendChild(counter);
+    }
+
+    // Gérer la classe zone-limit-reached
+    if (currentCount >= zoneData.limit) {
+      zoneElement.classList.add("zone-limit-reached");
+    } else {
+      zoneElement.classList.remove("zone-limit-reached");
+    }
+  });
 }
 
 // Mettre à jour les zones obligatoires vides
 function updateRequiredZones() {
-    Object.keys(ZONE_CONFIG).forEach(zone => {
-        const zoneData = ZONE_CONFIG[zone];
-        const zoneElement = document.querySelector(`.${zone}`);
-        const currentCount = workers.filter(w => w.zone === zone).length;
-        
-        if (zoneData.required && currentCount === 0) {
-            zoneElement.classList.add('empty-required');
-        } else {
-            zoneElement.classList.remove('empty-required');
-        }
-    });
+  Object.keys(ZONE_CONFIG).forEach((zone) => {
+    const zoneData = ZONE_CONFIG[zone];
+    const zoneElement = document.querySelector(`.${zone}`);
+    const currentCount = workers.filter((w) => w.zone === zone).length;
+
+    if (zoneData.required && currentCount === 0) {
+      zoneElement.classList.add("empty-required");
+    } else {
+      zoneElement.classList.remove("empty-required");
+    }
+  });
 }
 
 // Gestion des erreurs d'image
 function handleImageError(img) {
-    img.src = '';
-    img.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-    img.style.display = 'flex';
-    img.style.alignItems = 'center';
-    img.style.justifyContent = 'center';
-    img.style.fontSize = '24px';
-    img.textContent = '👤';
+  img.src = "";
+  img.style.background = "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+  img.style.display = "flex";
+  img.style.alignItems = "center";
+  img.style.justifyContent = "center";
+  img.style.fontSize = "24px";
+  img.textContent = "👤";
 }
 
 function handleProfileImageError(img) {
-    img.style.display = 'none';
-    const placeholder = document.createElement('div');
-    placeholder.className = 'profile-photo';
-    placeholder.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-    placeholder.style.display = 'flex';
-    placeholder.style.alignItems = 'center';
-    placeholder.style.justifyContent = 'center';
-    placeholder.style.fontSize = '60px';
-    placeholder.textContent = '👤';
-    img.parentNode.insertBefore(placeholder, img);
+  img.style.display = "none";
+  const placeholder = document.createElement("div");
+  placeholder.className = "profile-photo";
+  placeholder.style.background =
+    "linear-gradient(135deg, #667eea 0%, #764ba2 100%)";
+  placeholder.style.display = "flex";
+  placeholder.style.alignItems = "center";
+  placeholder.style.justifyContent = "center";
+  placeholder.style.fontSize = "60px";
+  placeholder.textContent = "👤";
+  img.parentNode.insertBefore(placeholder, img);
 }
 
 // Fonctions globales pour les événements onclick
@@ -543,3 +641,204 @@ window.selectWorkerForZone = selectWorkerForZone;
 window.handleImageError = handleImageError;
 window.handleProfileImageError = handleProfileImageError;
 
+
+
+
+
+
+
+
+
+
+
+
+
+//  les éléments 
+const addWorkerForm = document.querySelector("#addWorkerForm");
+const workerNameInput = document.querySelector("#workerName");
+const workerEmailInput = document.querySelector("#workerEmail");
+const workerPhoneInput = document.querySelector("#workerPhone");
+const workerRoleInput = document.querySelector("#workerRole");
+
+// erreur
+const nameError = document.createElement("div");
+const emailError = document.createElement("div");
+const phoneError = document.createElement("div");
+const roleError = document.createElement("div");
+
+// Regex 
+const nameRegex = /^[a-zA-ZÀ-ÿ\s\-']{2,50}$/; // lettres, espaces, tirets, accents
+const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // format email
+const phoneRegex = /^(?:(?:\+|00)33|0)[1-9](?:[\s.-]?\d{2}){4}$/; // téléphone FR
+const roleRegex = /.+/; // au moins un caractère (non vide)
+
+// design d'erreur
+function setupErrorElements() {
+    // Style des messages d'erreur
+    const errorStyle = {
+        color: "red",
+        fontSize: "12px",
+        marginTop: "5px",
+        fontWeight: "bold"
+    };
+    
+    // Configuration les erreurs
+    [nameError, emailError, phoneError, roleError].forEach(errorElement => {
+        Object.assign(errorElement.style, errorStyle);
+    });
+    
+    // Ajout après chaque champ
+    workerNameInput.parentNode.appendChild(nameError);
+    workerEmailInput.parentNode.appendChild(emailError);
+    workerPhoneInput.parentNode.appendChild(phoneError);
+    workerRoleInput.parentNode.appendChild(roleError);
+}
+
+// fct de validation
+function validateInput(input, regex, errorElement, errorMessage) {
+    if (!regex.test(input.value.trim())) {
+        // invalide
+        input.classList.add("invalid");
+        errorElement.textContent = errorMessage;
+        return false;
+    } else {
+        // valide
+        input.classList.remove("invalid");
+        errorElement.textContent = "";
+        return true;
+    }
+}
+
+// ======= Validation en temps réel (oninput) =======
+workerNameInput.addEventListener("input", () =>
+    validateInput(
+        workerNameInput, 
+        nameRegex, 
+        nameError, 
+        "Nom invalide (lettres et espaces seulement)"
+    )
+);
+
+workerEmailInput.addEventListener("input", () =>
+    validateInput(
+        workerEmailInput, 
+        emailRegex, 
+        emailError, 
+        "Email invalide (ex: salma@gmail.com)"
+    )
+);
+
+workerPhoneInput.addEventListener("input", () =>
+    validateInput(
+        workerPhoneInput, 
+        phoneRegex, 
+        phoneError, 
+        "Téléphone invalide (ex: 06 05 63 04 77)"
+    )
+);
+
+workerRoleInput.addEventListener("change", () =>
+    validateInput(
+        workerRoleInput, 
+        roleRegex, 
+        roleError, 
+        "Veuillez sélectionner un rôle"
+    )
+);
+
+//  CSS pour invalide
+const style = document.createElement('style');
+style.textContent = `
+    .invalid {
+        border-color: red !important;
+        background-color: #ffe6e6 !important;
+    }
+`;
+document.head.appendChild(style);
+
+// Modification de handleAddWorker
+function handleAddWorker(e) {
+    e.preventDefault();
+
+    // Validation finale au submit
+    const isNameValid = validateInput(
+        workerNameInput, 
+        nameRegex, 
+        nameError, 
+        "Nom invalide (lettres et espaces seulement)"
+    );
+    
+    const isEmailValid = validateInput(
+        workerEmailInput, 
+        emailRegex, 
+        emailError, 
+        "Email invalide (ex: salma@gmail.com)"
+    );
+    
+    const isPhoneValid = validateInput(
+        workerPhoneInput, 
+        phoneRegex, 
+        phoneError, 
+        "Téléphone invalide (ex: 06 05 63 04 77)"
+    );
+    
+    const isRoleValid = validateInput(
+        workerRoleInput, 
+        roleRegex, 
+        roleError, 
+        "Veuillez sélectionner un rôle"
+    );
+
+    // Si tout est valide
+    if (isNameValid && isEmailValid && isPhoneValid && isRoleValid) {
+        // Récupération des valeurs
+        const name = workerNameInput.value.trim();
+        const role = workerRoleInput.value;
+        const photo = document.getElementById("workerPhoto").value.trim();
+        const email = workerEmailInput.value.trim();
+        const phone = workerPhoneInput.value.trim();
+
+        // Récupération des expériences
+        const experiences = [];
+        document.querySelectorAll(".experience-item").forEach((item) => {
+            const inputs = item.querySelectorAll("input");
+            if (inputs[0].value && inputs[1].value) {
+                experiences.push({
+                    position: inputs[0].value.trim(),
+                    period: inputs[1].value.trim(),
+                });
+            }
+        });
+
+        // Création de l'employé
+        const worker = {
+            id: nextWorkerId++,
+            name: name,
+            role: role,
+            photo: photo || "",
+            email: email,
+            phone: phone,
+            experiences: experiences,
+            zone: null,
+        };
+        console.log("TOUS LES CHAMPS VALIDES - Début de l'ajout"); 
+        workers.push(worker);
+        saveToStorage();
+        renderAll();
+        updateRequiredZones();
+        closeAddModal();
+                console.log(" TOUS LES CHAMPS VALIDES - Début de l'ajout"); 
+
+        alert("✅ Employé ajouté avec succès !");
+    } else {4
+        alert("❌ Veuillez corriger les erreurs avant de soumettre");
+    }
+}
+
+// Initialisation
+document.addEventListener("DOMContentLoaded", () => {
+    loadFromStorage();
+    renderAll();
+    updateRequiredZones();
+    setupErrorElements(); 
+});

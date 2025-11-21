@@ -254,7 +254,7 @@ hr {
     flex: 1;
 }
 
-.pronalinfor {
+.pronalinfo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -474,6 +474,32 @@ hr {
     cursor: pointer;
 }
 
+.button-row {
+    display: flex;
+    gap: 15px;          
+}
+
+.button-row button {
+    flex: 1;           
+}
+
+.fromremplit button[type="reset"] {
+    background: rgb(131, 134, 135);
+    color: white;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.fromremplit button[type="reset"]:hover {
+    background: rgb(72, 76, 78);
+}
+
 .fromremplit button[type="submit"] {
     background: rgb(0, 168, 253);
     color: white;
@@ -485,7 +511,6 @@ hr {
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
-    margin-top: 10px;
 }
 
 .fromremplit button[type="submit"]:hover {
