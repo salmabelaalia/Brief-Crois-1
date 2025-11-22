@@ -509,7 +509,7 @@ function updateZoneButtons() {
   });
 }
 
-// Mettre à jour les compteurs de zones
+// compteur
 function updateZoneCounters() {
   Object.keys(ZONE_CONFIG).forEach((zone) => {
     const zoneElement = document.querySelector(`.${zone}`);
