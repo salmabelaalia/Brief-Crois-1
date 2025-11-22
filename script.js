@@ -57,8 +57,8 @@ const ROLE_RESTRICTIONS = {
 };
 
 // État de l'application
-let workers = []; 
-let nextWorkerId = 1; 
+let workers = [];
+let nextWorkerId = 1;
 
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
@@ -90,6 +90,14 @@ function initializeEventListeners() {
   });
 
   // Formulaire d'ajout
+  document
+    .getElementById("addWorkerForm")
+    .querySelector('button[type="reset"]')
+    .addEventListener("click", function (e) {
+      e.preventDefault();
+      closeAddModal();
+    });
+
   document
     .getElementById("addWorkerForm")
     .addEventListener("submit", handleAddWorker);
@@ -314,7 +322,7 @@ function selectWorkerForZone(workerId, zone) {
 }
 
 function closeZoneSelector() {
-  console.log("Fermeture du sélecteur de zone"); 
+  console.log("Fermeture du sélecteur de zone");
   document.getElementById("zoneSelectorModal").classList.remove("active");
   document.getElementById("modalOverlay").classList.remove("active");
 }
@@ -471,7 +479,7 @@ function renderZoneWorkers() {
       console.error(`❌ Conteneur non trouvé: ${zone}list`);
       return;
     }
-    
+
     container.innerHTML = zoneWorkers
       .map(
         (worker) => `
@@ -543,7 +551,7 @@ function updateRequiredZones() {
     const zoneData = ZONE_CONFIG[zone];
     const zoneElement = document.querySelector(`.${zone}`);
     const currentCount = workers.filter((w) => w.zone === zone).length;
-    
+
     if (zoneData.required && currentCount === 0) {
       zoneElement.classList.add("empty-required");
     } else {
