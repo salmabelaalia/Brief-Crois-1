@@ -200,8 +200,8 @@ hr {
 .serveurs.empty-required,
 .securite.empty-required,
 .archives.empty-required {
-    background: rgba(255, 182, 193, 0.3);
-    border: 2px dashed rgba(255, 100, 100, 0.5);
+    background: rgba(120, 2, 2, 0.35);
+    border: 2px rgba(255, 100, 100, 0.8);
 }
 
 .conference h1,
@@ -243,7 +243,7 @@ hr {
 .receptionlist,
 .serveurslist,
 .securitelist,
-.persnnallist,
+.personnellist,
 .archiveslist {
     display: flex;
     flex-direction: column;
