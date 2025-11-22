@@ -474,6 +474,13 @@ hr {
     cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 0.85em;
+  margin-bottom: 5px;
+  display: block;
+}
+
 .button-row {
     display: flex;
     gap: 15px;          
