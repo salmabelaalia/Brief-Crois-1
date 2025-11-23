@@ -70,6 +70,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Écouteurs d'événements
 function initializeEventListeners() {
+  // Écouteurs d'événements
+
+  document.getElementById("workerName").addEventListener("input", validateNameRealTime);
+  document.getElementById("workerEmail").addEventListener("input", validateEmailRealTime);
+  document.getElementById("workerPhone").addEventListener("input", validatePhoneRealTime);
+  document.getElementById("workerRole").addEventListener("change", validateRoleRealTime);
+
+  // ... le reste de votre code ...
+
   // Bouton ajouter employé
   document.getElementById("validation").addEventListener("click", openAddModal);
 
@@ -121,6 +130,69 @@ function initializeEventListeners() {
   });
 }
 
+// =====================================================
+// ======= VALIDATION EN TEMPS RÉEL =======
+function validateNameRealTime() {
+  const name = document.getElementById("workerName").value.trim();
+  const nameRegex = /^[a-zA-Z\s'-]+$/;
+  
+  if (!name) {
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("workerName").classList.remove("invalid");
+  } else if (!nameRegex.test(name)) {
+    document.getElementById("nameError").textContent = "Pas d'accents, de chiffres ou de caractères spéciaux";
+    document.getElementById("workerName").classList.add("invalid");
+  } else {
+    document.getElementById("nameError").textContent = "";
+    document.getElementById("workerName").classList.remove("invalid");
+  }
+}
+
+function validateEmailRealTime() {
+  const email = document.getElementById("workerEmail").value.trim();
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+  if (!email) {
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("workerEmail").classList.remove("invalid");
+  } else if (!emailRegex.test(email)) {
+    document.getElementById("emailError").textContent = "Format email invalide (ex: exemple@gmail.com)";
+    document.getElementById("workerEmail").classList.add("invalid");
+  } else {
+    document.getElementById("emailError").textContent = "";
+    document.getElementById("workerEmail").classList.remove("invalid");
+  }
+}
+
+function validatePhoneRealTime() {
+  const phone = document.getElementById("workerPhone").value.trim();
+  const phoneRegex = /^(?:(?:\+|00)33|0)[1-9](\d{2}){4}$/;
+  const cleanPhone = phone.replace(/[\s\.\-]/g, '');
+  
+  if (!phone) {
+    document.getElementById("phoneError").textContent = "";
+    document.getElementById("workerPhone").classList.remove("invalid");
+  } else if (!phoneRegex.test(cleanPhone)) {
+    document.getElementById("phoneError").textContent = "Format invalide (ex: 06 12 34 56 78)";
+    document.getElementById("workerPhone").classList.add("invalid");
+  } else {
+    document.getElementById("phoneError").textContent = "";
+    document.getElementById("workerPhone").classList.remove("invalid");
+  }
+}
+
+function validateRoleRealTime() {
+  const role = document.getElementById("workerRole").value;
+  
+  if (!role) {
+    document.getElementById("workerRole").classList.add("invalid");
+  } else {
+    document.getElementById("workerRole").classList.remove("invalid");
+  }
+}
+
+// =====================================================
+
 // Gestion du stockage localStorage
 function saveToStorage() {
   localStorage.setItem(
@@ -148,6 +220,14 @@ function openAddModal() {
   document.getElementById("addWorkerForm").reset();
   document.getElementById("experiencesList").innerHTML = "";
   document.getElementById("profileimg").classList.remove("active");
+
+  document.getElementById("nameError").textContent = "";
+  document.getElementById("emailError").textContent = "";
+  document.getElementById("phoneError").textContent = "";
+  document.getElementById("workerName").classList.remove("invalid");
+  document.getElementById("workerEmail").classList.remove("invalid");
+  document.getElementById("workerPhone").classList.remove("invalid");
+  document.getElementById("workerRole").classList.remove("invalid");
 }
 
 function closeAddModal() {
@@ -215,6 +295,54 @@ function handleAddWorker(e) {
   const email = document.getElementById("workerEmail").value.trim();
   const phone = document.getElementById("workerPhone").value.trim();
 
+  // ======= VALIDATION AVANT ENVOI =======
+  let isValid = true;
+
+  // Vérifier s'il y a des champs invalides
+  if (document.getElementById("workerName").classList.contains("invalid")) {
+    isValid = false;
+  }
+  if (document.getElementById("workerEmail").classList.contains("invalid")) {
+    isValid = false;
+  }
+  if (document.getElementById("workerPhone").classList.contains("invalid")) {
+    isValid = false;
+  }
+  if (document.getElementById("workerRole").classList.contains("invalid")) {
+    isValid = false;
+  }
+
+  // Vérifier les champs vides
+  if (!name || !role || !email || !phone) {
+    isValid = false;
+    // Afficher les erreurs pour les champs vides
+    if (!name) {
+      document.getElementById("nameError").textContent = "Le nom est obligatoire";
+      document.getElementById("workerName").classList.add("invalid");
+    }
+    if (!role) {
+      document.getElementById("workerRole").classList.add("invalid");
+    }
+    if (!email) {
+      document.getElementById("emailError").textContent = "L'email est obligatoire";
+      document.getElementById("workerEmail").classList.add("invalid");
+    }
+    if (!phone) {
+      document.getElementById("phoneError").textContent = "Le téléphone est obligatoire";
+      document.getElementById("workerPhone").classList.add("invalid");
+    }
+  }
+
+  // Si validation échoue, on arrête
+  if (!isValid) {
+    alert("Veuillez corriger les erreurs avant d'envoyer le formulaire");
+    return;
+  }
+
+  // ======= SI TOUT EST VALIDE =======
+  // Photo par défaut si vide
+  const finalPhoto = photo || "img_bg/inconnu.jpeg";
+
   // Récupération des expériences
   const experiences = [];
   document.querySelectorAll(".experience-item").forEach((item) => {
@@ -231,7 +359,7 @@ function handleAddWorker(e) {
     id: nextWorkerId++,
     name: name,
     role: role,
-    photo: photo || "",
+    photo: finalPhoto, 
     email: email,
     phone: phone,
     experiences: experiences,

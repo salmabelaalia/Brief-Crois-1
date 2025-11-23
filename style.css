@@ -474,6 +474,11 @@ hr {
     cursor: pointer;
 }
 
+input.invalid {
+  border-color: red;
+  background-color: #ffe6e6;
+} 
+
 .error {
   color: red;
   font-size: 0.85em;
