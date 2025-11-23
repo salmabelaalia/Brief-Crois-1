@@ -1,28 +1,29 @@
-#🧩 WorkSphere - Système de Gestion du Personnel
+# WorkSphere - Système de Gestion du Personnel
 
 
 📋 Table des Matières
 
-🌟 Aperçu
+    🌟 Aperçu
 
-🚀 Fonctionnalités
+    🚀 Fonctionnalités
 
-🛠️ Installation
+    🛠️ Installation
 
-🎯 Utilisation
+    🎯 Utilisation
 
-📁 Structure du Projet
+    📁 Structure du Projet
 
-👥 Rôles et Zones
+    👥 Rôles et Zones
 
-📱 Responsive Design
+    📱 Responsive Design
 
-🔧 Développement
+    🔧 Développement
 
-🤝 Contribution
+    🤝 Contribution
 
 
-🌟 Aperçu
+🌟# Aperçu
+
 WorkSphere est une application web moderne de gestion du personnel permettant d'assigner dynamiquement les employés aux différentes zones d'un espace de travail. L'interface intuitive offre une visualisation claire du plan et des affectations.
 
 🚀 Fonctionnalités
