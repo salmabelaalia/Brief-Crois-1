@@ -1,5 +1,4 @@
 🏢 WorkSphere - Système de Gestion du Personnel
-https://img.shields.io/badge/WorkSphere-Management-blue https://img.shields.io/badge/Version-1.0-green https://img.shields.io/badge/License-MIT-yellow
 
 📋 Table des Matières
 🌟 Aperçu
