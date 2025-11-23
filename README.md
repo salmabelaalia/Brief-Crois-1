@@ -22,7 +22,7 @@
     🤝 Contribution
 
 
-🌟# Aperçu
+🌟 Aperçu
 
 WorkSphere est une application web moderne de gestion du personnel permettant d'assigner dynamiquement les employés aux différentes zones d'un espace de travail. L'interface intuitive offre une visualisation claire du plan et des affectations.
 
@@ -54,7 +54,7 @@ WorkSphere est une application web moderne de gestion du personnel permettant d'
 
      📚 Salle d'Archives
 
-     🎨 Feedback visuel des zones requises
+🎨 Feedback visuel des zones requises
 
 🔄 Logique Métier Intelligente
 
@@ -66,27 +66,29 @@ WorkSphere est une application web moderne de gestion du personnel permettant d'
 
 📱 Design Responsive
 
-💻 Desktop (>1280px)
+     💻 Desktop (>1280px)
 
-🖥️ Petit écran (1024px-1279px)
+     🖥️ Petit écran (1024px-1279px)
 
-📟 Tablette (768px-1023px)
+     📟 Tablette (768px-1023px)
 
-📱 Mobile (<767px)
+     📱 Mobile (<767px)
 
 🛠️ Installation
-Prérequis
-Navigateur web moderne
 
-Serveur web local (optionnel)
+     Prérequis
 
-Étapes d'installation
+     Navigateur web moderne
+
+     Serveur web local (optionnel)
+
+     Étapes d'installation
 bash
 # Cloner le repository
-git clone https://github.com/salmabelaalia/worksphere.git
+git clone https://github.com/salmabelaalia/Brief-Crois-1.git
 
 # Se déplacer dans le dossier
-cd worksphere
+cd Brief-Crois-1
 
 # Ouvrir dans le navigateur
 open index.html
@@ -131,8 +133,6 @@ L'employé apparaît dans la zone
 
 📁 Structure du Projet
 
-text
-
 Brief-Crois-1/
 
 ├── 📄 index.html          # Structure principale
@@ -165,7 +165,8 @@ Brief-Crois-1/
 
 🗺️ Règles d'Assignation
 
-Zone	Rôles Autorisés
+Zone	         Rôles Autorisés
+
 🎪 Conférence	Tous sauf restrictions
 
 🏣 Réception	Réceptionniste uniquement
@@ -182,31 +183,31 @@ Zone	Rôles Autorisés
 
 💻 Desktop (>1280px)
 
-Sidebar + Plan côte à côte
+     Sidebar + Plan côte à côte
 
-Grid complexe pour le plan
+     Grid complexe pour le plan
 
 🖥️ Petit Écran (1024px-1279px)
 
-Ajustements proportionnels
+     Ajustements proportionnels
 
-Optimisation des espaces
+     Optimisation des espaces
 
 📟 Tablette (768px-1023px)
 
-Layout vertical
+     Layout vertical
 
-Image portrait
+     Image portrait
 
-Navigation adaptée
+     Navigation adaptée
 
 📱 Mobile (<767px)
 
-Stack vertical complet
+     Stack vertical complet
 
-Sidebar en bas
+     Sidebar en bas
 
-Interactions tactiles
+     Interactions tactiles
 
 🔧 Développement
 
