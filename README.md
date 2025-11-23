@@ -28,19 +28,19 @@ WorkSphere est une application web moderne de gestion du personnel permettant d'
 
 🚀 Fonctionnalités
 
-👨‍💼 Gestion du Personnel
+1. Gestion du Personnel
 
-✅ Ajout d'employés avec formulaire complet
+2. Ajout d'employés avec formulaire complet
 
-📸 Aperçu photo en temps réel
+3. Aperçu photo en temps réel
 
-📝 Gestion des expériences professionnelles
+4. Gestion des expériences professionnelles
 
-🎯 Validation des données en temps réel
+5. Validation des données en temps réel
 
-🗺️ Plan d'Étage Interactif
+7. Plan d'Étage Interactif
 
-🏢 6 zones configurables :
+8. zones configurables :
 
      🎪 Salle de Conférence
 
@@ -54,17 +54,17 @@ WorkSphere est une application web moderne de gestion du personnel permettant d'
 
      📚 Salle d'Archives
 
-🎨 Feedback visuel des zones requises
+9. Feedback visuel des zones requises
 
-🔄 Logique Métier Intelligente
+10. Logique Métier Intelligente
 
-⚡ Assignation automatique selon les rôles
+11. Assignation automatique selon les rôles
 
-🚫 Restrictions intelligentes par zone
+12. Restrictions intelligentes par zone
 
-🔄 Mise à jour dynamique des listes
+13. Mise à jour dynamique des listes
 
-📱 Design Responsive
+14. Design Responsive
 
      💻 Desktop (>1280px)
 
@@ -216,55 +216,55 @@ Zone	         Rôles Autorisés
 
 📅 Jour 1 : Fondation & Structure
 
-✅ Structure HTML et layout
+    ✅ Structure HTML et layout
 
-✅ Modèles de données
+    ✅ Modèles de données
 
-✅ Modal d'ajout d'employé
+    ✅ Modal d'ajout d'employé
 
-✅ Validation formulaire
+    ✅ Validation formulaire
 
 
 📅 Jour 2 : Affichage & Visualisation
 
-✅ Liste personnel non assigné
+    ✅ Liste personnel non assigné
 
-✅ Rendu des zones
+    ✅ Rendu des zones
 
-✅ Aperçu photo
+    ✅ Aperçu photo
 
-✅ Sous-formulaire expériences
+    ✅ Sous-formulaire expériences
 
 
 📅 Jour 3 : Logique Métier
 
-✅ Règles d'assignation
+    ✅ Règles d'assignation
 
-✅ Bouton "+" fonctionnel
+    ✅ Bouton "+" fonctionnel
 
-✅ Affichage zones
+    ✅ Affichage zones
 
-✅ Bouton "X" suppression
+    ✅ Bouton "X" suppression
 
 
 📅 Jour 4 : UI/UX & Design
 
-✅ Système de design
+    ✅ Système de design
 
-✅ Feedback zones requises
+    ✅ Feedback zones requises
 
-✅ Profil détaillé employé
+    ✅ Profil détaillé employé
 
-✅ Responsive desktop
+    ✅ Responsive desktop
 
 
 📅 Jour 5 : Mobile & Déploiement
 
-✅ Responsive tablette/mobile
+    ✅ Responsive tablette/mobile
 
-✅ Animations CSS
+    ✅ Animations CSS
 
-✅ Déploiement
+    ✅ Déploiement
 
 # 🛠️ Technologies Utilisées
 Frontend : HTML5, CSS3, JavaScript Vanilla
