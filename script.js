@@ -166,7 +166,7 @@ function validateEmailRealTime() {
 
 function validatePhoneRealTime() {
   const phone = document.getElementById("workerPhone").value.trim();
-  const phoneRegex = /^(?:(?:\+|00)33|0)[1-9](\d{2}){4}$/;
+  const phoneRegex = /^(?:(?:\+|00)212|0)[67](\d{8})$/;
   const cleanPhone = phone.replace(/[\s\.\-]/g, '');
   
   if (!phone) {
