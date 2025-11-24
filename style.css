@@ -949,3 +949,257 @@ input.invalid {
 .container img {
     z-index: 1;
 }
+/* ===== RESPONSIVE POUR LES MODALES ===== */
+
+/* Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.modal-overlay.active {
+    display: block;
+}
+
+/* Modales principales */
+.validationForm, 
+.profile-modal,
+#zoneSelectorModal {
+    display: none;
+    flex-direction: column;
+    background: white;
+    width: 550px;
+    max-height: 90vh;
+    position: fixed;
+    border-radius: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.validationForm.active,
+.profile-modal.active,
+#zoneSelectorModal.active {
+    display: flex;
+}
+
+/* Responsive Tablet */
+@media (max-width: 1023px) {
+    .validationForm,
+    .profile-modal,
+    #zoneSelectorModal {
+        width: 90%;
+        max-width: 500px;
+        padding: 25px;
+    }
+
+    .btncancel h1 {
+        font-size: 20px;
+    }
+
+    .fromremplit input,
+    .fromremplit select {
+        height: 45px;
+        font-size: 15px;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 20px;
+    }
+
+    .profile-role {
+        font-size: 14px;
+    }
+}
+
+/* Responsive Mobile */
+@media (max-width: 767px) {
+    .validationForm,
+    .profile-modal,
+    #zoneSelectorModal {
+        width: 95%;
+        padding: 20px;
+        border-radius: 15px;
+        max-height: 85vh;
+    }
+
+    .btncancel {
+        margin-bottom: 15px;
+    }
+
+    .btncancel h1 {
+        font-size: 18px;
+    }
+
+    .btncancel button {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+    }
+
+    /* Formulaire d'ajout */
+    .fromremplit {
+        gap: 12px;
+    }
+
+    .fromremplit label {
+        font-size: 13px;
+    }
+
+    .fromremplit input,
+    .fromremplit select {
+        height: 40px;
+        font-size: 14px;
+        padding: 0 12px;
+    }
+
+    .input-group1 {
+        gap: 12px;
+    }
+
+    .profileimg {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Boutons */
+    .fromremplit button[type="submit"],
+    .fromremplit button[type="reset"] {
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .button-row {
+        gap: 10px;
+    }
+
+    /* Expériences */
+    .experiences-header h3 {
+        font-size: 14px;
+    }
+
+    .add-experience-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    .experience-item {
+        padding: 12px;
+    }
+
+    .remove-experience-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+    }
+
+    /* Profile Modal */
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 18px;
+    }
+
+    .profile-role {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .info-row {
+        padding: 12px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .info-label {
+        min-width: auto;
+        font-size: 12px;
+    }
+
+    .info-value {
+        font-size: 14px;
+    }
+
+    /* Zone Selector Modal */
+    #zoneSelectorList {
+        max-height: 300px;
+    }
+
+    .pronalinfo {
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .pronalinfo img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .info h1 {
+        font-size: 13px;
+    }
+
+    .info p {
+        font-size: 11px;
+    }
+}
+
+/* Responsive Petit Mobile */
+@media (max-width: 480px) {
+    .validationForm,
+    .profile-modal,
+    #zoneSelectorModal {
+        width: 98%;
+        padding: 15px;
+        border-radius: 12px;
+        max-height: 80vh;
+    }
+
+    .btncancel h1 {
+        font-size: 16px;
+    }
+
+    .btncancel button {
+        width: 28px;
+        height: 28px;
+        font-size: 18px;
+    }
+
+    /* Formulaire d'ajout */
+    .fromremplit {
+        gap: 10px;
+    }
+
+    .fromremplit label {
+        font-size: 12px;
+    }
+
+    .fromremplit input,
+    .fromremplit select {
+        height: 38px;
+        font-size: 13px;
+        padding: 0 10px;
+    }
+
+    .input-group1 {
+        gap: 10px;
+        flex-direction: column;
+        align-items
