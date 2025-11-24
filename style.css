@@ -255,7 +255,7 @@ hr {
 }
 
 .pronalinfor {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     align-items: center;
     gap: 8px;
@@ -642,74 +642,43 @@ input.invalid {
     z-index: 10;
 }
 
+.clss{
+    display: flex;
+    justify-content: center;
+}
+
+
 /* Responsive */
 @media (max-width: 1023px) {
     .bigcontain {
         flex-direction: column;
-    }
-
-    .side {
-        width: 100%;
-        height: auto;
-        max-height: 400px;
-    }
-
-    .container {
-        width: 100%;
         height: 100vh;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 25%);
-    }
-
-    .vertcolouar,
-    .horizcolouar {
-        display: none;
-    }
-
-    .conference {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-
-    .serveurs {
-        grid-column: 2 / 3;
-        grid-row: 1 / 2;
-    }
-
-    .reception {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
-    }
-
-    .securite {
-        grid-column: 2 / 3;
-        grid-row: 2 / 3;
-    }
-
-    .personnel {
-        grid-column: 1 / 2;
-        grid-row: 3 / 4;
-    }
-
-    .archives {
-        grid-column: 2 / 3;
-        grid-row: 3 / 4;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .validationForm,
-    .profile-modal {
-        width: 95%;
-        padding: 20px;
+        min-height: 100vh;
     }
 
     .container {
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 16.66%);
-        gap: 10px;
-        padding: 10px;
+        width: 100%;
+        height: auto; 
+        aspect-ratio: 16/9; 
+        max-width: 100%;
+        max-height: 60vh;
+        margin: 0 auto; 
+        order: 1;
+
+        grid-template-columns: 38% 16% 23% 23%;
+        grid-template-rows: 35% 30% 35%;
+        position: relative;
+        display: grid; 
+    }
+
+    .container img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        z-index: 0;
+        top: 0;
+        left: 0;
     }
 
     .conference,
@@ -717,31 +686,266 @@ input.invalid {
     .serveurs,
     .securite,
     .personnel,
-    .archives {
-        grid-column: 1 / 2;
+    .archives,
+    .vertcolouar,
+    .horizcolouar {
+        position: relative;
+        z-index: 2;
+        background: transparent;
+        border: none;
+        margin: 0;
+        padding: 8px;
     }
 
-    .conference {
-        grid-row: 1 / 2;
+    /* sidebar en bas */
+    .side {
+        width: 100%;
+        height: auto; 
+        flex: 1; 
+        max-height: 40vh;
+        padding: 10px 0;
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .reception {
-        grid-row: 2 / 3;
+    .sidebar-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 15px;
+        margin-bottom: 10px;
+        flex-shrink: 0;
     }
 
-    .serveurs {
-        grid-row: 3 / 4;
+    .logo-text {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-align: center;
+        width: 100%;
     }
 
-    .securite {
-        grid-row: 4 / 5;
+    .validation {
+        width: 90%;
+        max-width: 300px;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #1138f7;
+        color: white;
+        box-shadow: 1px 0px 8px #ccc;
+        font-weight: 600;
+        font-size: 13px;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+        margin-bottom: 10px;
+        flex-shrink: 0;
     }
 
-    .personnel {
-        grid-row: 5 / 6;
+    hr {
+        width: 95%;
+        margin: 8px 0;
+        border: none;
+        border-top: 2px solid #e0e0e0;
+        flex-shrink: 0;
     }
 
-    .archives {
-        grid-row: 6 / 7;
+    .persolist {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0 15px;
+        flex: 1;
+        min-height: 120px;
     }
+
+    .conference h1,
+    .reception h1,
+    .serveurs h1,
+    .securite h1,
+    .personnel h1,
+    .archives h1 {
+        font-size: 10px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 3px 6px;
+        border-radius: 4px;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .plusbtn {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        background: rgba(17, 56, 247, 0.9);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    .conferencelist,
+    .receptionlist,
+    .serveurslist,
+    .securitelist,
+    .personnellist,
+    .archiveslist {
+        max-height: 60%;
+        overflow-y: auto;
+        padding: 2px;
+    }
+
+    .pronalinfor {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        padding: 4px;
+        margin: 1px;
+    }
+
+    .pronalinfor img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .pronalinfor .info h1 {
+        font-size: 9px;
+        margin-bottom: 2px;
+    }
+
+    .pronalinfor .info p {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 767px) {
+    .container {
+        aspect-ratio: 16/9;
+        max-height: 55vh;
+        width: 95%; 
+    }
+
+    .side {
+        max-height: 45vh;
+    }
+
+    .conference h1,
+    .reception h1,
+    .serveurs h1,
+    .securite h1,
+    .personnel h1,
+    .archives h1 {
+        font-size: 9px;
+        padding: 2px 4px;
+    }
+
+    .plusbtn {
+        width: 22px;
+        height: 22px;
+        font-size: 14px;
+    }
+
+    .pronalinfor img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .pronalinfor .info h1 {
+        font-size: 8px;
+    }
+
+    .pronalinfor .info p {
+        font-size: 7px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        aspect-ratio: 16/9;
+        max-height: 50vh;
+        width: 98%;
+    }
+
+    .side {
+        max-height: 50vh;
+    }
+
+    .conference h1,
+    .reception h1,
+    .serveurs h1,
+    .securite h1,
+    .personnel h1,
+    .archives h1 {
+        font-size: 8px;
+        padding: 1px 3px;
+    }
+
+    .plusbtn {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .pronalinfor {
+        padding: 3px;
+    }
+
+    .pronalinfor img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .pronalinfor .info h1 {
+        font-size: 7px;
+    }
+
+    .pronalinfor .info p {
+        font-size: 6px;
+    }
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .container {
+        aspect-ratio: 16/9;
+        max-height: 65vh;
+        width: 90%;
+    }
+
+    .side {
+        max-height: 35vh;
+    }
+
+    .persolist {
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 5px 10px;
+    }
+
+    .pronalinfo {
+        min-width: 160px;
+        height: 60px;
+        flex-shrink: 0;
+    }
+}
+
+.container {
+    overflow: hidden;
+}
+
+.container > *:not(img) {
+    position: relative;
+    z-index: 2;
+}
+
+.container img {
+    z-index: 1;
 }
