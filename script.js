@@ -1,4 +1,3 @@
-// Configuration des zones et restrictions
 const ZONE_CONFIG = {
   conference: { name: "Salle de conférence", limit: 10, required: false },
   reception: { name: "Réception", limit: 2, required: true },
@@ -8,7 +7,6 @@ const ZONE_CONFIG = {
   archives: { name: "Salle d'archives", limit: 2, required: true },
 };
 
-// Restrictions par rôle
 const ROLE_RESTRICTIONS = {
   Réceptionniste: ["reception"],
   "Technicien IT": ["serveurs"],
@@ -56,9 +54,101 @@ const ROLE_RESTRICTIONS = {
   ],
 };
 
-// État de l'application
-let workers = [];
-let nextWorkerId = 1;
+let workers = [
+    {
+        id: 1,
+        name: "Hamza Kamal",
+        role: "Technicien IT",
+        photo: "https://avatars.githubusercontent.com/u/113290995?v=4",
+        email: "hamza@gmail.com",
+        phone: "06 12 34 56 78",
+        experiences: [
+            { position: "Développeur Full Stack", period: "2020-2022" },
+            { position: "Admin Système", period: "2022-2023" }
+        ],
+        zone: "serveurs"
+    },
+    {
+        id: 2,
+        name: "Zineb Kamili", 
+        role: "Manager",
+        photo: "https://avatars.githubusercontent.com/u/113290996?v=4",
+        email: "zineb@gmail.com",
+        phone: "06 23 45 67 89",
+        experiences: [
+            { position: "Chef de Projet", period: "2019-2021" },
+            { position: "Directrice Marketing", period: "2021-2023" }
+        ],
+        zone: "conference"
+    },
+    {
+        id: 3,
+        name: "Mouad Aabilla",
+        role: "Agent de sécurité", 
+        photo: "https://avatars.githubusercontent.com/u/113290997?v=4",
+        email: "mouad@gmail.com",
+        phone: "06 34 56 78 90",
+        experiences: [
+            { position: "Agent de Sécurité", period: "2021-2022" },
+            { position: "Superviseur Sécurité", period: "2022-2023" }
+        ],
+        zone: "securite"
+    },
+    {
+        id: 4,
+        name: "Amine Zemrani",
+        role: "Réceptionniste",
+        photo: "https://avatars.githubusercontent.com/u/113290998?v=4", 
+        email: "amine@gmail.com",
+        phone: "06 45 67 89 01",
+        experiences: [
+            { position: "Hôte d'Accueil", period: "2020-2021" },
+            { position: "Standardiste", period: "2021-2023" }
+        ],
+        zone: "reception"
+    },
+    {
+        id: 5,
+        name: "Siham Miloud",
+        role: "Manager",
+        photo: "https://avatars.githubusercontent.com/u/113290999?v=4",
+        email: "siham@gmail.com", 
+        phone: "06 56 78 90 12",
+        experiences: [
+            { position: "Responsable RH", period: "2018-2020" },
+            { position: "Directrice Administrative", period: "2020-2023" }
+        ],
+        zone: "personnel"
+    },
+    {
+        id: 6,
+        name: "Karim Bennani",
+        role: "Nettoyage",
+        photo: "https://avatars.githubusercontent.com/u/113291000?v=4",
+        email: "karim@gmail.com",
+        phone: "06 67 89 01 23", 
+        experiences: [
+            { position: "Agent d'Entretien", period: "2021-2022" },
+            { position: "Responsable Propreté", period: "2022-2023" }
+        ],
+        zone: null
+    },
+    {
+        id: 7,
+        name: "Fatima Zahra",
+        role: "RH", 
+        photo: "https://avatars.githubusercontent.com/u/113291001?v=4",
+        email: "fatima@gmail.com",
+        phone: "06 78 90 12 34",
+        experiences: [
+            { position: "Assistante RH", period: "2020-2021" },
+            { position: "Recruteuse", period: "2021-2023" }
+        ],
+        zone: "archives"
+    }
+];
+
+let nextWorkerId = 8;
 
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
@@ -68,21 +158,16 @@ document.addEventListener("DOMContentLoaded", () => {
   updateRequiredZones();
 });
 
-// Écouteurs d'événements
 function initializeEventListeners() {
   // Écouteurs d'événements
-
   document.getElementById("workerName").addEventListener("input", validateNameRealTime);
   document.getElementById("workerEmail").addEventListener("input", validateEmailRealTime);
   document.getElementById("workerPhone").addEventListener("input", validatePhoneRealTime);
   document.getElementById("workerRole").addEventListener("change", validateRoleRealTime);
 
-  // ... le reste de votre code ...
-
-  // Bouton ajouter employé
   document.getElementById("validation").addEventListener("click", openAddModal);
 
-  // Fermeture modales
+  // Fermeture 
   document
     .getElementById("closeModal")
     .addEventListener("click", closeAddModal);
@@ -124,14 +209,15 @@ function initializeEventListeners() {
   // Boutons + des zones
   document.querySelectorAll(".plusbtn").forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      const zone = e.target.dataset.zone;
+      // const zone = e.target.dataset.zone;
+      const zone = btn.dataset.zone;
       openZoneSelector(zone);
+      background-color
+      backgroundColor
     });
   });
 }
 
-// =====================================================
-// ======= VALIDATION EN TEMPS RÉEL =======
 function validateNameRealTime() {
   const name = document.getElementById("workerName").value.trim();
   const nameRegex = /^[a-zA-Z\s'-]+$/;
@@ -191,7 +277,6 @@ function validateRoleRealTime() {
   }
 }
 
-// =====================================================
 
 // Gestion du stockage localStorage
 function saveToStorage() {
@@ -387,7 +472,6 @@ function canAssignToZone(worker, zone) {
     case "Nettoyage":
       return zone !== "archives";
     default:
-      // Autres rôles : accès libre
       return !["reception", "serveurs", "securite", "archives"].includes(zone);
   }
 }
@@ -719,3 +803,4 @@ window.removeWorkerFromZone = removeWorkerFromZone;
 window.selectWorkerForZone = selectWorkerForZone;
 window.handleImageError = handleImageError;
 window.handleProfileImageError = handleProfileImageError;
+

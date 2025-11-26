@@ -1202,4 +1202,5 @@ input.invalid {
     .input-group1 {
         gap: 10px;
         flex-direction: column;
-        align-items
+     }
+}
