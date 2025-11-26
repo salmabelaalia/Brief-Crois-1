@@ -57,98 +57,111 @@ const ROLE_RESTRICTIONS = {
 let workers = [
     {
         id: 1,
-        name: "Hamza Kamal",
+        name: "Sophie Martin",
         role: "Technicien IT",
-        photo: "https://avatars.githubusercontent.com/u/113290995?v=4",
-        email: "hamza@gmail.com",
+        photo: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "sophie.martin@entreprise.com",
         phone: "06 12 34 56 78",
         experiences: [
-            { position: "Développeur Full Stack", period: "2020-2022" },
-            { position: "Admin Système", period: "2022-2023" }
+            { position: "Administrateur Réseau", period: "2019-2021" },
+            { position: "Support Technique", period: "2021-2023" }
         ],
         zone: "serveurs"
     },
     {
         id: 2,
-        name: "Zineb Kamili", 
+        name: "Thomas Bernard",
         role: "Manager",
-        photo: "https://avatars.githubusercontent.com/u/113290996?v=4",
-        email: "zineb@gmail.com",
+        photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "thomas.bernard@entreprise.com",
         phone: "06 23 45 67 89",
         experiences: [
-            { position: "Chef de Projet", period: "2019-2021" },
-            { position: "Directrice Marketing", period: "2021-2023" }
+            { position: "Chef d'Équipe", period: "2018-2020" },
+            { position: "Directeur de Projet", period: "2020-2023" }
         ],
         zone: "conference"
     },
     {
         id: 3,
-        name: "Mouad Aabilla",
-        role: "Agent de sécurité", 
-        photo: "https://avatars.githubusercontent.com/u/113290997?v=4",
-        email: "mouad@gmail.com",
+        name: "Léa Dubois",
+        role: "Agent de sécurité",
+        photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "lea.dubois@entreprise.com",
         phone: "06 34 56 78 90",
         experiences: [
-            { position: "Agent de Sécurité", period: "2021-2022" },
-            { position: "Superviseur Sécurité", period: "2022-2023" }
+            { position: "Agent de Surveillance", period: "2020-2021" },
+            { position: "Responsable Sécurité", period: "2021-2023" }
         ],
         zone: "securite"
     },
     {
         id: 4,
-        name: "Amine Zemrani",
+        name: "Mohamed Alami",
         role: "Réceptionniste",
-        photo: "https://avatars.githubusercontent.com/u/113290998?v=4", 
-        email: "amine@gmail.com",
+        photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "mohamed.alami@entreprise.com",
         phone: "06 45 67 89 01",
         experiences: [
-            { position: "Hôte d'Accueil", period: "2020-2021" },
+            { position: "Accueil Client", period: "2019-2021" },
             { position: "Standardiste", period: "2021-2023" }
         ],
         zone: "reception"
     },
     {
         id: 5,
-        name: "Siham Miloud",
+        name: "Camille Petit",
         role: "Manager",
-        photo: "https://avatars.githubusercontent.com/u/113290999?v=4",
-        email: "siham@gmail.com", 
+        photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "camille.petit@entreprise.com",
         phone: "06 56 78 90 12",
         experiences: [
-            { position: "Responsable RH", period: "2018-2020" },
-            { position: "Directrice Administrative", period: "2020-2023" }
+            { position: "Assistante de Direction", period: "2017-2019" },
+            { position: "Manager Opérationnel", period: "2019-2023" }
         ],
         zone: "personnel"
     },
     {
         id: 6,
-        name: "Karim Bennani",
+        name: "Jean Moreau",
         role: "Nettoyage",
-        photo: "https://avatars.githubusercontent.com/u/113291000?v=4",
-        email: "karim@gmail.com",
-        phone: "06 67 89 01 23", 
+        photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "jean.moreau@entreprise.com",
+        phone: "06 67 89 01 23",
         experiences: [
-            { position: "Agent d'Entretien", period: "2021-2022" },
-            { position: "Responsable Propreté", period: "2022-2023" }
+            { position: "Agent de Surface", period: "2020-2021" },
+            { position: "Responsable Propreté", period: "2021-2023" }
         ],
         zone: null
     },
     {
         id: 7,
-        name: "Fatima Zahra",
-        role: "RH", 
-        photo: "https://avatars.githubusercontent.com/u/113291001?v=4",
-        email: "fatima@gmail.com",
+        name: "Sarah Cohen",
+        role: "RH",
+        photo: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "sarah.cohen@entreprise.com",
         phone: "06 78 90 12 34",
         experiences: [
-            { position: "Assistante RH", period: "2020-2021" },
-            { position: "Recruteuse", period: "2021-2023" }
+            { position: "Assistante RH", period: "2019-2021" },
+            { position: "Recruteuse Senior", period: "2021-2023" }
         ],
         zone: "archives"
+    },
+    {
+        id: 8,
+        name: "David Leroy",
+        role: "Commercial",
+        photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80",
+        email: "david.leroy@entreprise.com",
+        phone: "06 89 01 23 45",
+        experiences: [
+            { position: "Commercial", period: "2018-2020" },
+            { position: "Responsable Ventes", period: "2020-2023" }
+        ],
+        zone: null
     }
 ];
 
-let nextWorkerId = 8;
+let nextWorkerId = 9;
 
 // Initialisation
 document.addEventListener("DOMContentLoaded", () => {
